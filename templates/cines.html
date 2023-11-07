@@ -1,0 +1,22 @@
+﻿{% extends 'base/index.html'%} {% block body %}
+<div class="contenido-interno">
+
+	<h1>Nuestros Cines</h1>
+	<br />
+	{% for row in cinema %}
+	<div class="contenido-cine">
+		<img src="static/img/cine/{{row['idCine']}}.1.jpg" width="227" height="170" />
+		<div class="datos-cine">
+			<h4>{{row["RazonSocial"]}}</h4>
+			<br/>
+			<span>{{ row["Direccion"]}} - {{ row["Detalle"]}}<br /><br />Teléfono: {{row["Telefonos"]}} anexo
+				865</span>
+		</div>
+		<br />
+		<a href="/cine/{{row['idCine']}}">
+			<img src="static/img/varios/ico-info2.png" width="150" height="40" />
+		</a>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
