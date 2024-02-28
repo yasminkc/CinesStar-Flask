@@ -7,8 +7,8 @@ class BD:
     passwd = "luisnunura123456"
     charset = "utf8mb4"
     tipo_obtencion = pymysql.cursors.DictCursor
-    def __init__(self,base_datos) -> None:
-        self.base_datos = base_datos
+    def __init__(self) -> None:
+        self.base_datos = "cinestar"
     try:
         def get_connection(self):
             connection = pymysql.connect(host = self.host,
