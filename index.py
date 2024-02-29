@@ -1,10 +1,11 @@
-from flask import Flask, Blueprint, redirect, render_template, url_for
+from flask import Flask, Blueprint, redirect, render_template, url_for, request
 from Controller.Cine import cine_blue
 from Controller.Pelicula import pelicula_blue
 
 
 app = Flask(__name__)
-
+app.register_blueprint(cine_blue)
+app.register_blueprint(pelicula_blue)
 
 
 @app.route("/")
@@ -15,7 +16,6 @@ def index():
 
 
 if __name__ =="__main__":
-    app.register_blueprint(cine_blue)
-    app.register_blueprint(pelicula_blue)
+  
     app.run(debug = True, port= 4000)
 

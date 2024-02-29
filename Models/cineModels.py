@@ -8,7 +8,7 @@ class cineModels(ModelsBase):
         super().__init__()
         
     def view_cine(self,id_cine):
-        return self.sentencia(f"call usp_getCine({id_cine})")
+        return self.sentencia_unica(f"call usp_getCine({id_cine})")
 
     def get_cines(self):
         
