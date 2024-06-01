@@ -1,4 +1,4 @@
-from bd import * 
+from bd import BD
 
 bd = BD("cinestar")
 

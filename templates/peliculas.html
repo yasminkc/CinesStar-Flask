@@ -1,27 +1,28 @@
-﻿	{% extends 'base/index.html' %}
-	{% block body %}
-			<div class="contenido-interno">
-				<br><h1>Cartelera</h1><br>
+﻿{% extends 'base/index.html' %}
+{% block body %}
 
-				{% for row in films %}
-				<div class="contenido-pelicula">
-					<div class="datos-pelicula">
-						<h2>{{row[1]}}</h2><br>
-						<p>{{row[2]}}</p>
-						<br>
-                       	<div class="boton-pelicula"> 
-                       		<a href="http://www.cinestar.com.pe/cartelera/pelicula/Locos-de-Amor-2" >
-                       			<img src="static/img/varios/btn-mas-info.jpg" width="120" height="30" alt="Ver info">
-                       		</a>
-               			</div>
-               			<div class="boton-pelicula"> 
-               				<a href="http://www.cinestar.com.pe/popups/trailer/v3fspveODBI" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )" >
-               					<img src="static/img/varios/btn-trailer.jpg" width="120" height="30" alt="Ver trailer">
-               				</a>
-                        </div> 
-					</div>
-					<img src="static/img/pelicula/{{row[0]}}.jpg" width="160" height="226"><br><br>
+
+	<div class="contenido-interno">
+		<br><h1>Cartelera</h1><br>
+		{% for row in films %}
+		<div class="contenido-pelicula">
+			<div class="datos-pelicula">
+				<h2>{{row['Titulo']}}</h2><br>
+				<p>{{row['Sinopsis']}}</p>
+				<br>
+				<div class="boton-pelicula"> 
+					<a href="http://www.cinestar.com.pe/cartelera/pelicula/Locos-de-Amor-2" >
+						<img src="{{ url_for('static', filename='img/varios/btn-mas-info.jpg') }}" width="120" height="30" alt="Ver info">
+					</a>
 				</div>
-				{% endfor %}
+				<div class="boton-pelicula"> 
+					<a href="http://www.cinestar.com.pe/popups/trailer/v3fspveODBI" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )" >
+						<img src="{{ url_for('static', filename='img/varios/btn-trailer.jpg')}}" width="120" height="30" alt="Ver trailer">
+					</a>
+				</div> 
 			</div>
-	{% endblock %}	
+			<img src="{{ url_for('static', filename='img/pelicula/'+ row['idPelicula']|string + '.jpg') }}" width="160" height="226"><br><br>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}	
