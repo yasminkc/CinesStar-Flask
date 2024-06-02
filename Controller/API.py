@@ -8,7 +8,7 @@ class API:
 
     def __init__(self):
         pass
-    def llamarApi():
+    def listaPalabrasClaves() ->dict:
         lista = {
             "precio" : "Para consultar el precio debes de acercarte a nuestra caja",
             "pago" : "Puedes pagar con efectivo, yape o tranferencia",
@@ -21,21 +21,23 @@ class API:
             "hola" : "Hola en que puedo ayudarte!",
 
         }
-        return jsonify(lista)
-    
-    
+        return lista
     
     @api_blue.route("/API/", methods=['POST'])
-    def chat(id_cinema = None):
+    def chat():
         # Obtener todos los parámetros de formulario
-        return API.devolverGet()
-        params_form = request.form.to_dict()
-        return params_form
-        return jsonify(combined_params)
+        form = request.form.to_dict()
 
-    def devolverGet():
-        params = request.form.to_dict()
-        return params
+        return API.procesarRespuesta(form.get("pregunta") or 'No encontrado')
 
+    def procesarRespuesta(pregunta : str):
+        tokens = pregunta.split()
+        palabras = API.listaPalabrasClaves()
+        
+        
+        claves = list(palabras.keys())
     
-api = API()
+        if(pregunta in claves):
+            return palabras.get(claves)
+        return tokens
+        
