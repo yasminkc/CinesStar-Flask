@@ -35,9 +35,10 @@ class API:
         palabras = API.listaPalabrasClaves()
         
         
+        
         claves = list(palabras.keys())
-    
-        if(pregunta in claves):
-            return palabras.get(claves)
-        return tokens
+        for letras in tokens:
+            if letras in claves:
+                return palabras.get(letras)
+        return 'No pudimos procesar tu pregunta'
         
