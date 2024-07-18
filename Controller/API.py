@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, jsonify, request, url_for
 
 #from ControllerBase import ControllerBase
 
-api_blue = Blueprint('api', __name__,template_folder='Controller', url_prefix='/')
+api_blue = Blueprint('api', __name__,template_folder='Controller', url_prefix='/api')
 
 class API:
 
@@ -22,6 +22,11 @@ class API:
 
         }
         return lista
+    
+    #def listarRutas(self):
+    @api_blue.route("/lista-palabras")
+    def lista_palabras(self):
+        return self.listaPalabrasClaves()
     
     @api_blue.route("/API/", methods=['POST'])
     def chat():
