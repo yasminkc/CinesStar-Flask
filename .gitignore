@@ -1,5 +1,5 @@
 __pycache__/
 Controller/*.pyc
 .env
-.venv
+venv
 *.pyc
