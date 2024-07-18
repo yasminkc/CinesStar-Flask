@@ -3,3 +3,4 @@ Controller/*.pyc
 .env
 venv
 *.pyc
+.vercel
