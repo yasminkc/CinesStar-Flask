@@ -13,7 +13,8 @@ app.register_blueprint(api_blue)
 def index():
     return render_template("base/index.html")
 
-
+def elminareTrabajo():
+    pass
 
 
 if __name__ =="__main__":
